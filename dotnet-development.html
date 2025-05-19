@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>.Net Development - WebCoreAI Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            /* Set the logo as the background image */
+            background-image: url('images/logo.jpg');
+            background-size: cover; /* Scales the image to cover the entire background */
+            background-position: center; /* Centers the image */
+            background-repeat: no-repeat; /* Prevents tiling */
+            background-attachment: fixed; /* Keeps the background fixed while scrolling */
+            position: relative; /* For the overlay */
+        }
+
+        /* Add a semi-transparent overlay to improve text readability */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8); /* White overlay with 80% opacity */
+            z-index: -1; /* Places the overlay behind the content */
+        }
+
+        /* Header and Navigation */
+        header {
+            background-color: #1a73e8;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 15px 20px;
+            display: block;
+            font-size: 16px;
+        }
+
+        .nav-menu li a:hover {
+            background-color: #1557b0;
+            transition: background 0.3s;
+        }
+
+        /* Dropdown Menu for Services */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #1557b0;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            top: 100%;
+            left: 0;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #e8f0fe;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a73e8, #4285f4);
+            color: #fff;
+            text-align: center;
+            padding: 20px 20px;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        /* Sections */
+        section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        h2 {
+            font-size: 32px;
+            color: #1a73e8;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        h3 {
+            font-size: 24px;
+            color: #333;
+            margin: 20px 0 10px;
+        }
+
+        p {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        
+
+        .cta-button {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .cta-button a {
+            background-color: #1a73e8;
+            color: #fff;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .cta-button a:hover {
+            background-color: #1557b0;
+            transition: background 0.3s;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a73e8;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+        footer a {
+            color: #e8f0fe;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: #1a73e8;
+                display: none;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu li a {
+                padding: 10px;
+            }
+
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header and Navigation -->
+    <header>
+        <nav>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li class="dropdown">
+                    <a href="services.html">Services</a>
+                    <div class="dropdown-content">
+                        <a href="dotnet-development.html">.Net Development</a>
+                        <a href="python-development.html">Python Development</a>
+                        <a href="uipath-automation.html">UiPath Automation</a>
+                        <a href="ai-based-automation.html">AI-Based Automation</a>
+                    </div>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="career.html">Careers</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>.Net Development Services</h1>
+        <p>Building Robust, Scalable, and High-Performance Applications with .NET</p>
+    </section>
+
+    <!-- .NET Development Overview -->
+    <section>
+        <h2>Empowering Your Business with .NET Development</h2>
+        <p>At WebCoreAI Solutions, we specialize in delivering top-tier .NET development services to help businesses create powerful, secure, and scalable applications. Leveraging the versatility of Microsoft’s .NET framework, our expert developers craft custom solutions tailored to your unique needs, ensuring seamless performance across platforms.</p>
+    </section>
+
+    <!-- What We Offer -->
+    <section>
+        <h2>What We Offer in .NET Development</h2>
+        <h3>Custom .NET Application Development</h3>
+        <p>We design and develop bespoke .NET applications that align with your business goals, whether you need enterprise-grade software, web applications, or desktop solutions.</p>
+
+        <h3>ASP.NET Web Development</h3>
+        <p>Our team builds dynamic, responsive, and secure web applications using ASP.NET, ensuring high performance and an exceptional user experience.</p>
+
+        <h3>.NET Core Development</h3>
+        <p>We utilize .NET Core to create cross-platform applications that run seamlessly on Windows, macOS, and Linux, offering flexibility and scalability for modern businesses.</p>
+
+        <h3>API Development & Integration</h3>
+        <p>Enhance your application’s functionality with custom APIs built on .NET. We ensure smooth integration with third-party services and existing systems.</p>
+
+        <h3>Migration to .NET</h3>
+        <p>Modernize your legacy applications by migrating to the .NET framework. We ensure a smooth transition with minimal downtime and enhanced performance.</p>
+    </section>
+
+    <!-- Why Choose Us for .NET Development -->
+    <section>
+        <h2>Why Choose WebCoreAI for .NET Development?</h2>
+        <ul>
+            <li><strong>Experienced Developers:</strong> Our .NET developers have years of experience building complex, high-performance applications.</li>
+            <li><strong>Agile Methodology:</strong> We follow agile practices to deliver projects on time while maintaining flexibility for your evolving needs.</li>
+            <li><strong>Scalable Solutions:</strong> Our .NET applications are designed to grow with your business, ensuring long-term success.</li>
+            <li><strong>Security First:</strong> We prioritize security in every .NET project, protecting your data and applications from vulnerabilities.</li>
+            <li><strong>End-to-End Support:</strong> From planning to deployment and maintenance, we provide comprehensive support throughout the development lifecycle.</li>
+        </ul>
+    </section>
+
+    <!-- Call to Action -->
+    <section>
+        <h2>Ready to Build with .NET?</h2>
+        <p>Let WebCoreAI Solutions bring your vision to life with our expert .NET development services. Contact us today to discuss your project and take the first step toward a smarter, more efficient application.</p>
+        <div class="cta-button">
+            <a href="contact.html">Get in Touch</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>WebCoreAI Solutions Private Limited</strong></p>
+        <p>Pioneering the future of AI and web technology. Contact us at <a href="mailto:webcoreai.solutions@gmail.com">webcoreai.solutions@gmail.com</a> or call <a href="tel:+91-XXX-XXX-XXXX">+91-XXX-XXX-XXXX</a>.</p>
+    </footer>
+</body>
+</html>

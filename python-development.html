@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Development - WebCoreAI Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            /* Set the logo as the background image */
+            background-image: url('images/logo.jpg');
+            background-size: cover; /* Scales the image to cover the entire background */
+            background-position: center; /* Centers the image */
+            background-repeat: no-repeat; /* Prevents tiling */
+            background-attachment: fixed; /* Keeps the background fixed while scrolling */
+            position: relative; /* For the overlay */
+        }
+
+        /* Add a semi-transparent overlay to improve text readability */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8); /* White overlay with 80% opacity */
+            z-index: -1; /* Places the overlay behind the content */
+        }
+
+        /* Header and Navigation */
+        header {
+            background-color: #1a73e8;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 15px 20px;
+            display: block;
+            font-size: 16px;
+        }
+
+        .nav-menu li a:hover {
+            background-color: #1557b0;
+            transition: background 0.3s;
+        }
+
+        /* Dropdown Menu for Services */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #1557b0;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            top: 100%;
+            left: 0;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #e8f0fe;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a73e8, #4285f4);
+            color: #fff;
+            text-align: center;
+            padding: 20px 20px;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        /* Sections */
+        section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        h2 {
+            font-size: 32px;
+            color: #1a73e8;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        h3 {
+            font-size: 24px;
+            color: #333;
+            margin: 20px 0 10px;
+        }
+
+        p {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        
+
+        .cta-button {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .cta-button a {
+            background-color: #1a73e8;
+            color: #fff;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .cta-button a:hover {
+            background-color: #1557b0;
+            transition: background 0.3s;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a73e8;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+        footer a {
+            color: #e8f0fe;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: #1a73e8;
+                display: none;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu li a {
+                padding: 10px;
+            }
+
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header and Navigation -->
+    <header>
+        <nav>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li class="dropdown">
+                    <a href="services.html">Services</a>
+                    <div class="dropdown-content">
+                        <a href="dotnet-development.html">.Net Development</a>
+                        <a href="python-development.html">Python Development</a>
+                        <a href="uipath-automation.html">UiPath Automation</a>
+                        <a href="ai-based-automation.html">AI-Based Automation</a>
+                    </div>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="career.html">Careers</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Python Development Services</h1>
+        <p>Unlock the Power of Python for Scalable and Efficient Solutions</p>
+    </section>
+
+    <!-- Python Development Overview -->
+    <section>
+        <h2>Driving Innovation with Python Development</h2>
+        <p>At WebCoreAI Solutions, we harness the versatility and power of Python to deliver high-quality, scalable, and efficient software solutions. Python’s simplicity and robust ecosystem make it the ideal choice for a wide range of applications, from web development to data science and automation. Our expert Python developers work closely with you to build tailored solutions that accelerate your business growth.</p>
+    </section>
+
+    <!-- What We Offer -->
+    <section>
+        <h2>What We Offer in Python Development</h2>
+        <h3>Custom Python Application Development</h3>
+        <p>We create custom Python applications to meet your specific business needs, ensuring flexibility, scalability, and performance.</p>
+
+        <h3>Web Development with Django and Flask</h3>
+        <p>Our team builds secure, responsive, and feature-rich web applications using popular Python frameworks like Django and Flask, delivering seamless user experiences.</p>
+
+        <h3>Data Science and Machine Learning</h3>
+        <p>Leverage Python’s powerful libraries like TensorFlow, Pandas, and NumPy to develop data-driven solutions, including predictive models, data analysis tools, and machine learning applications.</p>
+
+        <h3>Automation Scripts and Tools</h3>
+        <p>We develop Python scripts to automate repetitive tasks, streamline workflows, and improve operational efficiency for your business.</p>
+
+        <h3>API Development and Integration</h3>
+        <p>Enhance your applications with custom APIs built using Python. We ensure smooth integration with third-party services and existing systems.</p>
+    </section>
+
+    <!-- Why Choose Us for Python Development -->
+    <section>
+        <h2>Why Choose WebCoreAI for Python Development?</h2>
+        <ul>
+            <li><strong>Expert Python Developers:</strong> Our team has extensive experience in Python development across diverse industries.</li>
+            <li><strong>Agile Development Process:</strong> We follow agile methodologies to deliver projects on time while adapting to your evolving requirements.</li>
+            <li><strong>Scalable and Future-Ready:</strong> Our Python solutions are designed to scale as your business grows, ensuring long-term reliability.</li>
+            <li><strong>Cross-Domain Expertise:</strong> From web development to AI and automation, we leverage Python’s versatility to deliver comprehensive solutions.</li>
+            <li><strong>Continuous Support:</strong> We provide ongoing support and maintenance to ensure your Python applications remain efficient and up-to-date.</li>
+        </ul>
+    </section>
+
+    <!-- Call to Action -->
+    <section>
+        <h2>Ready to Innovate with Python?</h2>
+        <p>Partner with WebCoreAI Solutions to build powerful, efficient, and scalable solutions with Python. Contact us today to discuss your project and take the first step toward innovation.</p>
+        <div class="cta-button">
+            <a href="contact.html">Get in Touch</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>WebCoreAI Solutions Private Limited</strong></p>
+        <p>Pioneering the future of AI and web technology. Contact us at <a href="mailto:webcoreai.solutions@gmail.com">webcoreai.solutions@gmail.com</a> or call <a href="tel:+91-XXX-XXX-XXXX">+91-XXX-XXX-XXXX</a>.</p>
+    </footer>
+</body>
+</html>

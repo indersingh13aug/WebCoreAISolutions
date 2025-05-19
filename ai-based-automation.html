@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Based Automation - WebCoreAI Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            /* Set the logo as the background image */
+            background-image: url('images/logo.jpg');
+            background-size: cover; /* Scales the image to cover the entire background */
+            background-position: center; /* Centers the image */
+            background-repeat: no-repeat; /* Prevents tiling */
+            background-attachment: fixed; /* Keeps the background fixed while scrolling */
+            position: relative; /* For the overlay */
+        }
+
+        /* Add a semi-transparent overlay to improve text readability */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8); /* White overlay with 80% opacity */
+            z-index: -1; /* Places the overlay behind the content */
+        }
+
+        /* Header and Navigation */
+        header {
+            background-color: #1a73e8;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 15px 20px;
+            display: block;
+            font-size: 16px;
+        }
+
+        .nav-menu li a:hover {
+            background-color: #1557b0;
+            transition: background 0.3s;
+        }
+
+        /* Dropdown Menu for Services */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #1557b0;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            top: 100%;
+            left: 0;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #e8f0fe;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a73e8, #4285f4);
+            color: #fff;
+            text-align: center;
+            padding: 20px 20px;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        /* Sections */
+        section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        h2 {
+            font-size: 32px;
+            color: #1a73e8;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        h3 {
+            font-size: 24px;
+            color: #333;
+            margin: 20px 0 10px;
+        }
+
+        p {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        
+
+        .cta-button {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .cta-button a {
+            background-color: #1a73e8;
+            color: #fff;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .cta-button a:hover {
+            background-color: #1557b0;
+            transition: background 0.3s;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a73e8;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+        footer a {
+            color: #e8f0fe;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: #1a73e8;
+                display: none;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu li a {
+                padding: 10px;
+            }
+
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header and Navigation -->
+    <header>
+        <nav>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li class="dropdown">
+                    <a href="services.html">Services</a>
+                    <div class="dropdown-content">
+                        <a href="dotnet-development.html">.Net Development</a>
+                        <a href="python-development.html">Python Development</a>
+                        <a href="uipath-automation.html">UiPath Automation</a>
+                        <a href="ai-based-automation.html">AI-Based Automation</a>
+                    </div>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="career.html">Careers</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>AI-Based Automation Services</h1>
+        <p>Revolutionize Your Operations with Intelligent AI Solutions</p>
+    </section>
+
+    <!-- AI-Based Automation Overview -->
+    <section>
+        <h2>Empower Your Business with AI-Based Automation</h2>
+        <p>At WebCoreAI Solutions, we specialize in AI-based automation to help businesses optimize their operations, reduce costs, and enhance decision-making. By leveraging advanced artificial intelligence technologies, we create intelligent automation solutions that go beyond traditional methods, delivering smarter workflows, predictive insights, and unparalleled efficiency.</p>
+    </section>
+
+    <!-- What We Offer -->
+    <section>
+        <h2>What We Offer in AI-Based Automation</h2>
+        <h3>Intelligent Process Automation</h3>
+        <p>We use AI to automate complex processes, such as customer service workflows, data processing, and supply chain management, enabling faster and more accurate outcomes.</p>
+
+        <h3>Predictive Analytics</h3>
+        <p>Our AI solutions analyze historical data to predict trends, identify risks, and uncover opportunities, empowering your business with actionable insights.</p>
+
+        <h3>Natural Language Processing (NLP)</h3>
+        <p>We implement NLP-driven automation to handle tasks like chatbots, sentiment analysis, and document processing, improving customer interactions and operational efficiency.</p>
+
+        <h3>Computer Vision Automation</h3>
+        <p>From image recognition to quality control, our AI-based computer vision solutions automate visual tasks, reducing manual effort and enhancing accuracy.</p>
+
+        <h3>Custom AI Solutions</h3>
+        <p>We design tailored AI automation tools to address your unique business challenges, ensuring seamless integration with your existing systems.</p>
+    </section>
+
+    <!-- Why Choose Us for AI-Based Automation -->
+    <section>
+        <h2>Why Choose WebCoreAI for AI-Based Automation?</h2>
+        <ul>
+            <li><strong>AI Expertise:</strong> Our team of AI specialists has deep expertise in machine learning, NLP, and computer vision, delivering cutting-edge solutions.</li>
+            <li><strong>Customized Approach:</strong> We tailor our AI automation solutions to meet your specific business needs, ensuring maximum impact.</li>
+            <li><strong>Scalable Systems:</strong> Our AI solutions are designed to scale with your business, supporting growth and evolving requirements.</li>
+            <li><strong>Data-Driven Insights:</strong> We focus on delivering actionable insights through AI, helping you make informed decisions.</li>
+            <li><strong>Seamless Integration:</strong> Our AI automation tools integrate effortlessly with your existing workflows and technologies.</li>
+        </ul>
+    </section>
+
+    <!-- Call to Action -->
+    <section>
+        <h2>Ready to Transform with AI?</h2>
+        <p>Partner with WebCoreAI Solutions to harness the power of AI-based automation and drive your business forward. Contact us today to explore how we can help you achieve smarter operations.</p>
+        <div class="cta-button">
+            <a href="contact.html">Get in Touch</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>WebCoreAI Solutions Private Limited</strong></p>
+        <p>Pioneering the future of AI and web technology. Contact us at <a href="mailto:webcoreai.solutions@gmail.com">webcoreai.solutions@gmail.com</a> or call <a href="tel:+91-XXX-XXX-XXXX">+91-XXX-XXX-XXXX</a>.</p>
+        <p><strong>Business Hours:</strong> Monday - Friday, 9:00 AM - 6:00 PM IST</p>
+    </footer>
+</body>
+</html>

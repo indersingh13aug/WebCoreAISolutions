@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers - WebCoreAI Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            /* Set the logo as the background image */
+            background-image: url('images/logo.jpg');
+            background-size: cover; /* Scales the image to cover the entire background */
+            background-position: center; /* Centers the image */
+            background-repeat: no-repeat; /* Prevents tiling */
+            background-attachment: fixed; /* Keeps the background fixed while scrolling */
+            position: relative; /* For the overlay */
+        }
+
+        /* Add a semi-transparent overlay to improve text readability */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8); /* White overlay with 80% opacity */
+            z-index: -1; /* Places the overlay behind the content */
+        }
+
+        /* Header and Navigation */
+
+        header {
+            background-color: #1a73e8;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 15px 20px;
+            display: block;
+            font-size: 16px;
+        }
+
+        .nav-menu li a:hover {
+            background-color: #1557b0;
+            transition: background 0.3s;
+        }
+
+        /* Dropdown Menu for Services */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #1557b0;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            top: 100%;
+            left: 0;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #e8f0fe;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a73e8, #4285f4);
+            color: #fff;
+            text-align: center;
+            padding: 20px 20px;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        /* Sections */
+        section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        h2 {
+            font-size: 32px;
+            color: #1a73e8;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        h3 {
+            font-size: 24px;
+            color: #333;
+            margin: 20px 0 10px;
+        }
+
+        p {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        
+
+        .job-listing {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .apply-info {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .apply-info a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+
+        .apply-info a:hover {
+            text-decoration: underline;
+        }
+
+        .cta-button {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .cta-button a {
+            background-color: #1a73e8;
+            color: #fff;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .cta-button a:hover {
+            background-color: #1557b0;
+            transition: background 0.3s;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a73e8;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+        footer a {
+            color: #e8f0fe;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: #1a73e8;
+                display: none;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu li a {
+                padding: 10px;
+            }
+
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .job-listing {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header and Navigation -->
+    <header>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li class="dropdown">
+                    <a href="services.html">Services</a>
+                    <div class="dropdown-content">
+                        <a href="dotnet-development.html">.Net Development</a>
+                        <a href="python-development.html">Python Development</a>
+                        <a href="uipath-automation.html">UiPath Automation</a>
+                        <a href="ai-based-automation.html">AI-Based Automation</a>
+                    </div>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="career.html">Careers</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Join Our Team</h1>
+        <p>Build the Future with WebCoreAI Solutions</p>
+    </section>
+
+    <!-- Career Overview -->
+    <section>
+        <h2>Careers at WebCoreAI Solutions</h2>
+        <p>At WebCoreAI Solutions, we’re passionate about leveraging AI and web technologies to create impactful solutions. As a growing startup, we’re always on the lookout for talented individuals who share our vision of innovation, excellence, and collaboration. Join our team to work on cutting-edge projects, grow your skills, and make a meaningful difference in the tech world.</p>
+    </section>
+
+    <!-- Open Positions -->
+    <section>
+        <h2>Open Positions</h2>
+        <div class="job-listing">
+            <h3>.NET Developer</h3>
+            <p><strong>Location:</strong> Bangalore, Karnataka, India (Hybrid)</p>
+            <p><strong>Experience:</strong> 3-5 years</p>
+            <p><strong>Key Skills:</strong> ASP.NET, .NET Core, C#, SQL Server, Azure</p>
+            <p>We’re looking for a skilled .NET Developer to build robust and scalable applications. You’ll work on custom software projects, APIs, and cloud-based solutions, collaborating with a dynamic team.</p>
+        </div>
+        <div class="job-listing">
+            <h3>Python Developer</h3>
+            <p><strong>Location:</strong> Bangalore, Karnataka, India (Hybrid)</p>
+            <p><strong>Experience:</strong> 2-4 years</p>
+            <p><strong>Key Skills:</strong> Python, Django/Flask, Machine Learning, Data Analysis</p>
+            <p>Join us as a Python Developer to create web applications, automation scripts, and AI-driven solutions. Experience with data science and machine learning is a plus.</p>
+        </div>
+        <div class="job-listing">
+            <h3>UiPath Automation Specialist</h3>
+            <p><strong>Location:</strong> Bangalore, Karnataka, India (Remote)</p>
+            <p><strong>Experience:</strong> 1-3 years</p>
+            <p><strong>Key Skills:</strong> UiPath, RPA, Workflow Automation, Process Analysis</p>
+            <p>We’re seeking a UiPath Automation Specialist to design and implement RPA solutions. You’ll streamline business processes and enhance efficiency using UiPath bots.</p>
+        </div>
+        <div class="apply-info">
+            <p>Don’t see a role that fits? We’re always looking for talented individuals to join our team. Please share your resume with us at <a href="mailto:careers@webcoreai.com">careers@webcoreai.com</a>, and we’ll reach out if a suitable opportunity arises.</p>
+        </div>
+    </section>
+
+    <!-- Why Work With Us -->
+    <section>
+        <h2>Why Work With Us?</h2>
+        <ul>
+            <li><strong>Innovative Projects:</strong> Work on cutting-edge AI and web development projects that push the boundaries of technology.</li>
+            <li><strong>Growth Opportunities:</strong> We invest in your professional development with training, mentorship, and opportunities to grow.</li>
+            <li><strong>Collaborative Culture:</strong> Join a supportive team that values creativity, teamwork, and open communication.</li>
+            <li><strong>Flexible Work Environment:</strong> Enjoy a hybrid or remote work setup, depending on the role, to balance work and life.</li>
+            <li><strong>Impactful Work:</strong> Contribute to solutions that make a real difference for our clients and their businesses.</li>
+        </ul>
+    </section>
+
+    <!-- Call to Action -->
+    <section>
+        <h2>Ready to Join Us?</h2>
+        <p>If you’re excited about shaping the future of technology, we’d love to hear from you. Contact us or share your resume to explore opportunities at WebCoreAI Solutions.</p>
+        <div class="cta-button">
+            <a href="contact.html">Get in Touch</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>WebCoreAI Solutions Private Limited</strong></p>
+        <p>Pioneering the future of AI and web technology. Contact us at <a href="mailto:webcoreai.solutions@gmail.com">webcoreai.solutions@gmail.com</a> or call <a href="tel:+91-XXX-XXX-XXXX">+91-XXX-XXX-XXXX</a>.</p>
+    </footer>
+</body>
+</html>

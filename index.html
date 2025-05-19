@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebCoreAI Solutions - Home</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            /* Set the logo as the background image */
+            background-image: url('images/logo.jpg');
+            background-size: cover; /* Scales the image to cover the entire background */
+            background-position: center; /* Centers the image */
+            background-repeat: no-repeat; /* Prevents tiling */
+            background-attachment: fixed; /* Keeps the background fixed while scrolling */
+            position: relative; /* For the overlay */
+        }
+
+        /* Add a semi-transparent overlay to improve text readability */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8); /* White overlay with 80% opacity */
+            z-index: -1; /* Places the overlay behind the content */
+        }
+
+        /* Header and Navigation */
+        header {
+            background-color: #1a73e8;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px; /* Adjust the height of the logo in the nav bar */
+            width: auto; /* Maintains aspect ratio */
+            display: block;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 15px 20px;
+            display: block;
+            font-size: 16px;
+        }
+
+        .nav-menu li a:hover {
+            background-color: #1557b0;
+            transition: background 0.3s;
+        }
+
+        /* Dropdown Menu for Services */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #1557b0;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            top: 100%;
+            left: 0;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #e8f0fe;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a73e8, #4285f4);
+            color: #fff;
+            text-align: center;
+            padding: 20px 20px;
+            position: relative; /* Ensure hero content is above the overlay */
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Sections */
+        section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            position: relative; /* Ensure section content is above the overlay */
+        }
+
+        h2 {
+            font-size: 32px;
+            color: #1a73e8;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        p {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        
+
+        .cta-buttons {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .cta-buttons a {
+            background-color: #1a73e8;
+            color: #fff;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 0 10px;
+            font-size: 16px;
+        }
+
+        .cta-buttons a:hover {
+            background-color: #1557b0;
+            transition: background 0.3s;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a73e8;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+            position: relative; /* Ensure footer content is above the overlay */
+        }
+
+        footer a {
+            color: #e8f0fe;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: #1a73e8;
+                display: none;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu li a {
+                padding: 10px;
+            }
+
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .logo img {
+                height: 30px; /* Adjust for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header and Navigation -->
+    <header>
+        <nav>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li class="dropdown">
+                    <a href="services.html">Services</a>
+                    <div class="dropdown-content">
+                        <a href="dotnet-development.html">.Net Development</a>
+                        <a href="python-development.html">Python Development</a>
+                        <a href="uipath-automation.html">UiPath Automation</a>
+                        <a href="ai-based-automation.html">AI-Based Automation</a>
+                    </div>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="career.html">Careers</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Welcome to WebCoreAI Solutions</h1>
+        <p>Transforming Businesses with AI Automation and Web Innovation</p>
+        
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section>
+        <h2>Why Choose WebCoreAI?</h2>
+        <p><strong>AI-Powered Automation:</strong> Streamline operations and boost productivity with our bespoke AI solutions. From intelligent workflows to predictive analytics, we harness the power of artificial intelligence to transform your business processes.</p>
+        <p><strong>Innovative Web Development:</strong> Create impactful digital experiences with our tailored web development services. We build responsive, secure, and high-performance websites and applications that engage your audience and elevate your brand.</p>
+        <p><strong>End-to-End Solutions:</strong> From ideation to deployment, our expert team delivers comprehensive solutions that integrate AI and web technologies to meet your unique business needs.</p>
+    </section>
+
+    <!-- Services Section -->
+    <section>
+        <h2>Our Services</h2>
+        <ul>
+            <li><strong>AI Automation Solutions:</strong> Custom AI tools for process optimization, data analysis, and intelligent decision-making.</li>
+            <li><strong>Web Development:</strong> Responsive websites, e-commerce platforms, and web applications built for performance and scalability.</li>
+            <li><strong>AI-Web Integration:</strong> Combine AI capabilities with web platforms for smart, dynamic user experiences.</li>
+            <li><strong>Consulting & Strategy:</strong> Expert guidance to align AI and web solutions with your business goals.</li>
+        </ul>
+    </section>
+
+    <!-- Industries Section -->
+    <section>
+        <h2>Industries We Serve</h2>
+        <ul>
+            <li>E-Commerce</li>
+            <li>Healthcare</li>
+            <li>Finance</li>
+            <li>Education</li>
+            <li>Manufacturing</li>
+            <li>Startups & SMEs</li>
+        </ul>
+        <p>No matter your industry, WebCoreAI Solutions delivers tailored technology to accelerate your success.</p>
+    </section>
+
+    <!-- Why We Stand Out Section -->
+    <section>
+        <h2>Why WebCoreAI Stands Out</h2>
+        <ul>
+            <li><strong>Expert Team:</strong> Our developers, AI specialists, and strategists bring years of experience to every project.</li>
+            <li><strong>Client-Centric Approach:</strong> We prioritize your vision, ensuring solutions that align with your goals.</li>
+            <li><strong>Cutting-Edge Technology:</strong> We leverage the latest in AI and web frameworks to keep you ahead of the curve.</li>
+            <li><strong>Proven Results:</strong> Trusted by businesses worldwide to deliver measurable outcomes.</li>
+        </ul>
+    </section>
+
+    <!-- Call to Action -->
+    <section>
+        <h2>Ready to Transform Your Business?</h2>
+        <p>Partner with WebCoreAI Solutions to unlock the full potential of AI automation and web innovation. Let’s build a smarter, more connected future together.</p>
+        <div class="cta-buttons">
+            <a href="contact.html">Get in Touch</a>
+            <a href="services.html">Explore Our Work</a>
+        </div>
+    </section>
+
+<!-- Footer -->
+    <footer>
+        <p><strong>WebCoreAI Solutions Private Limited</strong></p>
+        <p>Pioneering the future of AI and web technology. Contact us at <a href="mailto:webcoreai.solutions@gmail.com">webcoreai.solutions@gmail.com</a> or call <a href="tel:+91-XXX-XXX-XXXX">+91-XXX-XXX-XXXX</a>.</p>
+    </footer>
